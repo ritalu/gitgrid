@@ -1,0 +1,19 @@
+/* color scheme is temporary, definitely can be changed */
+
+body {
+	background-color:#141826;
+	font-size: 15px;
+	font-family: "Verdana";
+	color: white;
+	text-align: center;
+}
+h1 {
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    text-align: center;
+    font-family: "Verdana";
+    font-size: 60px;
+    color: white;
+    font-weight: lighter;
+}
+
