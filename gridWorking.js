@@ -42,6 +42,7 @@ function color(id)
       case 0:
 	box.style = "fill: rgb(214, 230, 133);";
 	boxes[id]++;
+  calculateDate(id);
 	break;
       case 1:
 	box.style = "fill: rgb(140, 198, 101);";
@@ -91,16 +92,25 @@ var presentYear = d.getFullYear();
 var inputRow = 0; // between 0 and 6 inclusive
 var inputColumn = 0; // between 0 and 52 inclusive
 
+var squareNumber = 365;
+
 //////////////////
 // END OF INPUT //
 //////////////////
 
-console.log("At position [" + inputRow + "][" + inputColumn + "] of the array, the date is:");
+//console.log("At position [" + inputRow + "][" + inputColumn + "] of the array, the date is:");
+
+
 
 inputColumn++; // add 1 to offset incomplete column at the beginning
 
 /* leap years occur on years that are divisile by 4 (with some exceptions
  * but those happend once every century or so so we'll ignore them for now) */
+
+function calculateDate(number) {
+
+squareNumber = number;
+console.log("Square #" + squareNumber + " corresponds to: ")
 
 var leap = false;
 
@@ -151,7 +161,7 @@ presentTotal = presentTotal + presentDay;
 
 
 // calculate what the sampleTotalth day of the year is
-var startingDate = (presentTotal - presentDayOfWeek + 365) - (7)*(52);
+var startingDate = (presentTotal - presentDayOfWeek + 365 + 6) - (7)*(52);
 
 ////////////
 // OUTPUT //
@@ -167,11 +177,13 @@ var outputYear;
 
 var outputTotal;
 if (leap) {
-  outputTotal = (inputColumn * 7 + inputRow + startingDate) % 365;
+  // outputTotal = (inputColumn * 7 + inputRow + startingDate) % 365;
+  outputTotal = (squareNumber + startingDate) % 365;
 
 }
 else {
-  outputTotal = (inputColumn * 7 + inputRow + startingDate) % 366;
+  //outputTotal = (inputColumn * 7 + inputRow + startingDate) % 366;
+  outputTotal = (squareNumber + startingDate) % 366;
 }
 
 for (i = 0; i < 12; i++){
@@ -197,3 +209,4 @@ if (outputTotal > 0) {
 console.log("Month: " + outputMonth);
 console.log("Day: " + outputDay);
 console.log("Year: " + outputYear);
+}
