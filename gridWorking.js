@@ -35,29 +35,30 @@ function createGrid()
 
 function color(id)
 {
-    //here we'll access the 2D array - check the current colour, and update to the next colour
+    console.log("running color(" + id + ")");
+    // Check the current colour and update to the next colour.
     var box = document.getElementById(id);
     switch (boxes[id])
     {
-      case 0:
-	box.style = "fill: rgb(214, 230, 133);";
+      case 0:	
+	box.setAttribute("style", "fill: rgb(214, 230, 133);");
 	boxes[id]++;
-  calculateDate(id);
+	calculateDate(id);
 	break;
       case 1:
-	box.style = "fill: rgb(140, 198, 101);";
+	box.setAttribute("style", "fill: rgb(140, 198, 101);")
 	boxes[id]++;
 	break;
       case 2:
-	box.style = "fill: rgb(68, 163, 64);";
+	box.setAttribute("style", "fill: rgb(68, 163, 64);")
 	boxes[id]++;
 	break;
       case 3:
-	box.style = "fill: rgb(30, 104, 35);";
+	box.setAttribute("style", "fill: rgb(30, 104, 35);")
 	boxes[id]++;
 	break;
       case 4:
-	box.style = "fill: rgb(238, 238, 238);";
+	box.setAttribute("style", "fill: rgb(238, 238, 238);")
 	boxes[id] = 0;
 	break;
     }
