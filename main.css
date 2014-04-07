@@ -1,7 +1,7 @@
 /* color scheme is temporary, definitely can be changed */
 
 body {
-	background-color:#141826;
+	background-color:#660066;
 	font-size: 15px;
 	font-family: "Verdana";
 	color: white;
@@ -13,7 +13,7 @@ h1 {
     text-align: center;
     font-family: "Verdana";
     font-size: 60px;
-    color: white;
+    color: #8CC665;
     font-weight: lighter;
 }
 
