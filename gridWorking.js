@@ -35,7 +35,7 @@ function createGrid()
 
 function color(id)
 {
-    console.log("running color(" + id + ")");
+    //console.log("running color(" + id + ")");
     // Check the current colour and update to the next colour.
     var box = document.getElementById(id);
     switch (boxes[id])
@@ -67,6 +67,68 @@ function color(id)
 
 
 
+function colorUpdate(id, array)
+{
+    //here we'll access the 2D array - check the current colour, and update to the next colour
+    var box = document.getElementById(id);
+    switch (array[id])
+    {
+      case 0:
+  box.setAttribute = "fill: rgb(214, 230, 133);";
+  break;
+      case 1:
+  box.setAttribute = "fill: rgb(140, 198, 101);";
+  break;
+      case 2:
+  box.setAttribute = "fill: rgb(68, 163, 64);";
+  break;
+      case 3:
+  box.setAttribute = "fill: rgb(30, 104, 35);";
+  break;
+      case 4:
+  box.setAttribute = "fill: rgb(238, 238, 238);";
+  break;
+    }
+
+}
+
+
+
+
+
+var save1 = new Array;
+
+function save() {
+  save1 = boxes;
+  for (i = 0; i < save1.length; i++){
+    if (save1[i] != 0) {
+    console.log("position: " + i + " color: " + save1[i]);
+      }
+  }
+}
+
+
+
+function load() {
+  difference();
+  for (i = 0; i < save1.length; i++){
+      colorUpdate(i, save1);
+      if (save1[i] != 0){
+        console.log("filled " + i + " with color " + save1[i]);
+    }
+  }
+}
+
+function difference(){
+  console.log("difference called");
+  for (i = 0; i < save1.length; i++){
+    if (save1[i] != boxes[i]) {
+      console.log("different at position " + i);
+    }
+
+  }
+
+}
 
 
 
