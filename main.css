@@ -1,19 +1,28 @@
 /* color scheme is temporary, definitely can be changed */
 
 body {
-	background-color:#660066;
+	background-color:#9E6C7C;
+    /* possible colors:
+    #B32D45: a brighter cherry pink
+    #905B6E: faded purple, complementary to the second lightest shade of green
+    #9E6C7C: more pinkish faded purple;
+    #660066: neon purple, your original color
+    */
 	font-size: 15px;
 	font-family: "Verdana";
 	color: white;
 	text-align: center;
 }
 h1 {
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     line-height: 1.5;
     text-align: center;
     font-family: "Verdana";
     font-size: 60px;
-    color: #8CC665;
-    font-weight: lighter;
+    color: #EEEEEE;
+    /* the header color now matches the grey inside the square, not sure if this is better than white
+    #8CC665: green;
+    */
+    font-weight: lighter; 
 }
 
