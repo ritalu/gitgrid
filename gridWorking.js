@@ -418,25 +418,27 @@ function generateDates(array){
   var i = 0;
   for (var i = startingBlock; i < boxColors.length; i++) {
     //var dateString = calculateDate(i);
-    switch (array[i]) {
-      case 1:
-	// Weird calculation, I know, was playing around with the dates, I'll get around to making this more clear.
-	// Basically i-startingBlock tells us how far from the first block the current block is, and we add
-	// the offset % 7 to retain consistency with the current day of the week. Subtract 7 to start in the current
-	// week, if possible. today keeps track of whether today is the same day of the week as the first box to be
-	// drawn. If this is the case, we jump to the next week (so today's commits don't get in the way).
-        dates = dates + calculateDate(i-startingBlock + (offset) - 7 + today) + " - " + num1 + " commit" + "\n\n";
-      break;
-      case 2:
-        dates = dates + calculateDate(i-startingBlock + (offset) - 7 + today) + " - " + num2 + " commits" + "\n\n";
-      break;
-      case 3:
-        dates = dates + calculateDate(i-startingBlock + (offset) - 7 + today) + " - " + num3 + " commits" + "\n\n";
-      break;
-      case 4: 
-        dates = dates + calculateDate(i-startingBlock + (offset) - 7 + today) + " - " + num4 + " commits" + "\n\n";
-      break
-     
+    var curDate = calculateDate(i-startingBlock + (offset) - 7 + today);
+    if (curDate != "") {
+      switch (array[i]) {
+	case 1:
+	  // Weird calculation, I know, was playing around with the dates, I'll get around to making this more clear.
+	  // Basically i-startingBlock tells us how far from the first block the current block is, and we add
+	  // the offset % 7 to retain consistency with the current day of the week. Subtract 7 to start in the current
+	  // week, if possible. today keeps track of whether today is the same day of the week as the first box to be
+	  // drawn. If this is the case, we jump to the next week (so today's commits don't get in the way).
+	  dates = dates + curDate + " - " + num1 + " commit" + "\n\n";
+	break;
+	case 2:
+	  dates = dates + curDate + " - " + num2 + " commits" + "\n\n";
+	break;
+	case 3:
+	  dates = dates + curDate + " - " + num3 + " commits" + "\n\n";
+	break;
+	case 4: 
+	  dates = dates + curDate + " - " + num4 + " commits" + "\n\n";
+	break
+      }
     }
   }
   console.log(dates);
@@ -451,6 +453,7 @@ function generateDates(array){
 // stores information about present date
 
 var d = new Date();
+console.log(d);
 var presentDayOfWeek = d.getDay(); // 0 = Sunday, 1 = Monday, ... , 6 = Saturday
 var presentDay = d.getDate();
 var presentMonth = d.getMonth();;
@@ -574,21 +577,23 @@ function calculateDate(number) {
 
   if (outputTotal > 0) {
     outputDay = outputTotal;
+  } else {
+    return ""; //This is a corner case which occurs when we're switching between two years. We end up with a 0 total days left.
   }
 
-  if ((outputMonth >= presentMonth - 1) && (outputDay >= presentDay - 1)){
-    outputYear = presentYear - 1;
-
+  //If we're before the current month, it means we looped back to the earlier months of the following year.
+  if ((outputMonth < presentMonth + 1) || ((outputMonth == presentMonth + 1) && (outputDay < presentDay))) {
+    outputYear = presentYear + 1;
   }
   else {
     outputYear = presentYear;
   }
 
-  // console.log("Month: " + outputMonth);
-  // console.log("Day: " + outputDay);
-  // console.log("Year: " + outputYear);
+   console.log("Month: " + outputMonth);
+   console.log("Day: " + outputDay);
+   console.log("Year: " + outputYear);
   returnedString = dateToPrettyString(outputDay, outputMonth, outputYear);
-  //console.log("retunredString " + returnedString);
+  console.log("retunredString " + returnedString);
   return returnedString;
 
 }
